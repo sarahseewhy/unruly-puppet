@@ -1,4 +1,30 @@
 ---
-base::yum::plugins: foo_package
-base::yum::repos::unruly::baseurl: http://yum_unruly_baseurl.com
+base::yum::plugins:
+ - foo_package
+
+base::yum::repos::unruly::baseurl: http://yum-unruly-baseurl.com
+
+base::yum::repos::artifactory::credentials: some/credentials/key
+base::yum::repos::artifactory::baseurl: url.com
 base::yum::repos::epel::version: some-version
+
+some/credentials/key:
+  user: foo
+  pass: bar
+
+base::collectd::packages:
+  - some-package
+base::collectd::version: some-version
+base::collectd::backend::host: some-host
+base::collectd::backend::port: 1337
+
+base::syslog_ng::version: some-version
+
+base::nrpe::version: some-version
+base::nrpe::allowed_hosts:
+  - foo.nrpe.com
+  - bar.nrpe.com
+base::nrpe::plugins::version: some-plugins-version
+
+base::python::python_version: some-version
+base::python::python2_pip_version: some-version
